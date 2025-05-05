@@ -1,14 +1,12 @@
 package br.com.phsaraiva.Whatsapp_clone_api.model.user;
 
-import br.com.phsaraiva.Whatsapp_clone_api.common.BaseAuditingEntity;
+import br.com.phsaraiva.Whatsapp_clone_api.model.common.BaseAuditingEntity;
 import br.com.phsaraiva.Whatsapp_clone_api.model.chat.Chat;
 import jakarta.persistence.*;
-import jdk.jfr.Name;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.List;

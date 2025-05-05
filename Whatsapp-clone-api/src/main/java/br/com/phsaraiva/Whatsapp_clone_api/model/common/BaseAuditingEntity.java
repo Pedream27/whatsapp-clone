@@ -1,4 +1,4 @@
-package br.com.phsaraiva.Whatsapp_clone_api.common;
+package br.com.phsaraiva.Whatsapp_clone_api.model.common;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

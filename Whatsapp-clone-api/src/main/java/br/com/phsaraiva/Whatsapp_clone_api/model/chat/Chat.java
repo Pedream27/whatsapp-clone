@@ -1,6 +1,6 @@
 package br.com.phsaraiva.Whatsapp_clone_api.model.chat;
 
-import br.com.phsaraiva.Whatsapp_clone_api.common.BaseAuditingEntity;
+import br.com.phsaraiva.Whatsapp_clone_api.model.common.BaseAuditingEntity;
 import br.com.phsaraiva.Whatsapp_clone_api.model.message.Message;
 import br.com.phsaraiva.Whatsapp_clone_api.model.message.MessageState;
 import br.com.phsaraiva.Whatsapp_clone_api.model.message.MessageType;
@@ -21,6 +21,10 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "chat")
+@NamedQuery(name = ChatContants.FIND_CHAT_BY_SENDER_ID ,
+        query = "SELECT  DISTINCT c FROM  Chat  c WHERE  c.sender.id = :senderId OR c.recipient.id = :senderId ORDER BY createdDate DESC ")
+@NamedQuery(name = ChatContants.FIND_CHAT_BY_SENDER_ID_AND_RECIVER ,
+query = "SELECT DISTINCT  c FROM  Chat  c WHERE (c.sender.id = :senderId AND  c.recipient.id = :recipientId) OR  (c.sender.id = :recipientId AND  c.recipient.id = :senderId)  " )
 public class Chat  extends BaseAuditingEntity {
 
     @Id
