@@ -1,7 +1,7 @@
 package br.com.phsaraiva.Whatsapp_clone_api.model.user.repository;
 
 import br.com.phsaraiva.Whatsapp_clone_api.model.user.User;
-import br.com.phsaraiva.Whatsapp_clone_api.model.user.UserConstants;
+import br.com.phsaraiva.Whatsapp_clone_api.model.user.constants.UserConstants;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

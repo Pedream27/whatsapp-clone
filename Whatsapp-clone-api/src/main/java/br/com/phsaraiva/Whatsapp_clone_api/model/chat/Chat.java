@@ -2,8 +2,8 @@ package br.com.phsaraiva.Whatsapp_clone_api.model.chat;
 
 import br.com.phsaraiva.Whatsapp_clone_api.model.common.BaseAuditingEntity;
 import br.com.phsaraiva.Whatsapp_clone_api.model.message.Message;
-import br.com.phsaraiva.Whatsapp_clone_api.model.message.MessageState;
-import br.com.phsaraiva.Whatsapp_clone_api.model.message.MessageType;
+import br.com.phsaraiva.Whatsapp_clone_api.model.message.enun.MessageState;
+import br.com.phsaraiva.Whatsapp_clone_api.model.message.enun.MessageType;
 import br.com.phsaraiva.Whatsapp_clone_api.model.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package br.com.phsaraiva.Whatsapp_clone_api.model.user;
+package br.com.phsaraiva.Whatsapp_clone_api.model.user.constants;
 
 public class UserConstants {
 

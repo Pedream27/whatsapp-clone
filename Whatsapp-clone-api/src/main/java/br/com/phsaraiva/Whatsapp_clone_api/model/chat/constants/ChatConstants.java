@@ -1,9 +1,9 @@
-package br.com.phsaraiva.Whatsapp_clone_api.model.chat;
+package br.com.phsaraiva.Whatsapp_clone_api.model.chat.constants;
 
-public class ChatContants {
+public class ChatConstants {
 
 
     public static final String FIND_CHAT_BY_SENDER_ID = "Chat.findChatBySenderId";
     public static final String FIND_CHAT_BY_SENDER_ID_AND_RECIVER = "Chat.findChatBySenderIdAndReciver";
-    private ChatContants() {}
+    private ChatConstants() {}
 }

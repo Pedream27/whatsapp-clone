@@ -2,6 +2,10 @@ package br.com.phsaraiva.Whatsapp_clone_api.model.message;
 
 import br.com.phsaraiva.Whatsapp_clone_api.model.common.BaseAuditingEntity;
 import br.com.phsaraiva.Whatsapp_clone_api.model.chat.Chat;
+import br.com.phsaraiva.Whatsapp_clone_api.model.message.constants.MessageConstants;
+import br.com.phsaraiva.Whatsapp_clone_api.model.message.constants.MessageConstants;
+import br.com.phsaraiva.Whatsapp_clone_api.model.message.enun.MessageState;
+import br.com.phsaraiva.Whatsapp_clone_api.model.message.enun.MessageType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,9 +18,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "messages")
-@NamedQuery(name =  MessageContants.FIND_MESSAGES_BY_CHAT_ID ,
+@NamedQuery(name =  MessageConstants.FIND_MESSAGES_BY_CHAT_ID ,
 query =  "SELECT  m FROM  Message  m  WHERE  m.chat.id = :chatId ORDER BY  m.createdDate")
-@NamedQuery(name = MessageContants.SET_MESSAGES_TO_SEEN_BY_CHAT ,
+@NamedQuery(name = MessageConstants.SET_MESSAGES_TO_SEEN_BY_CHAT ,
         query =  "UPDATE  Message SET  state = :newState WHERE  chat.id = :chatId")
 public class Message extends BaseAuditingEntity {
     @Id

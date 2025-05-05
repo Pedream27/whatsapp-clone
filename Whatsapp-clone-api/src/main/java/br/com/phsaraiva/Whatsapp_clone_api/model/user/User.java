@@ -2,6 +2,7 @@ package br.com.phsaraiva.Whatsapp_clone_api.model.user;
 
 import br.com.phsaraiva.Whatsapp_clone_api.model.common.BaseAuditingEntity;
 import br.com.phsaraiva.Whatsapp_clone_api.model.chat.Chat;
+import br.com.phsaraiva.Whatsapp_clone_api.model.user.constants.UserConstants;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
