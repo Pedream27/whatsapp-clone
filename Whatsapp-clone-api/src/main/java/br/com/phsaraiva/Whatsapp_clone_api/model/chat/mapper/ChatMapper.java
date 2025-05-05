@@ -2,7 +2,10 @@ package br.com.phsaraiva.Whatsapp_clone_api.model.chat.mapper;
 
 import br.com.phsaraiva.Whatsapp_clone_api.model.chat.Chat;
 import br.com.phsaraiva.Whatsapp_clone_api.model.chat.ChatReesponse;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Component
 public class ChatMapper {
 
 
