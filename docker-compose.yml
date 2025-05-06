@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: pedream
       POSTGRES_PASSWORD: 32357989
-      PGDATA: /var/lib/postgresql/data
+      GDATA: /var/lib/postgresql/data
       POSTGRES_DB: whatsapp_clone
     volumes:
       - postgres:/data/postgres

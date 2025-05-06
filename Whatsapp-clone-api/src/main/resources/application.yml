@@ -11,21 +11,27 @@ spring:
       hibernate:
           format_sql: true
     database: postgresql
-    database-platform: org.hibernate.dialect.PostgrSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
   flyway:
     enabled: true
   security:
     oauth2:
-      resourceserver:
+      resource server:
         jwt:
           issuer-uri: http://localhost:9090/realms/whatsapp-clone
   servlet:
     multipart:
       max-file-size:  50MB
+
+springdoc:
+  default-produces-media-type:  application/json
+
 application:
   file:
     uploads:
       media-output.path: ./uploads
 
+
+debug: true
 
 
