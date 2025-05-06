@@ -31,6 +31,6 @@ public class UserSynchronizerFilter extends OncePerRequestFilter {
 
 
         }
-
+        filterChain.doFilter(request, response);
     }
 }
