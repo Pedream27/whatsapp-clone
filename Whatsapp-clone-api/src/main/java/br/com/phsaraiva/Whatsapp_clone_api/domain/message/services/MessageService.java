@@ -3,6 +3,7 @@ package br.com.phsaraiva.Whatsapp_clone_api.domain.message.services;
 import br.com.phsaraiva.Whatsapp_clone_api.domain.chat.Chat;
 import br.com.phsaraiva.Whatsapp_clone_api.domain.chat.repository.ChatRepository;
 import br.com.phsaraiva.Whatsapp_clone_api.domain.file.FileService;
+import br.com.phsaraiva.Whatsapp_clone_api.domain.file.FileUtils;
 import br.com.phsaraiva.Whatsapp_clone_api.domain.message.Message;
 import br.com.phsaraiva.Whatsapp_clone_api.domain.message.MessageRequest;
 import br.com.phsaraiva.Whatsapp_clone_api.domain.message.MessageResponse;
@@ -10,6 +11,9 @@ import br.com.phsaraiva.Whatsapp_clone_api.domain.message.enun.MessageState;
 import br.com.phsaraiva.Whatsapp_clone_api.domain.message.enun.MessageType;
 import br.com.phsaraiva.Whatsapp_clone_api.domain.message.mapper.MessageMapper;
 import br.com.phsaraiva.Whatsapp_clone_api.domain.message.repository.MessageRepository;
+import br.com.phsaraiva.Whatsapp_clone_api.domain.notification.Notification;
+import br.com.phsaraiva.Whatsapp_clone_api.domain.notification.NotificationType;
+import br.com.phsaraiva.Whatsapp_clone_api.domain.notification.service.NotificationService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +31,7 @@ public class MessageService {
     private final ChatRepository chatRepository;
     private final FileService fileService;
     private final MessageMapper mapper;
+    private final NotificationService notificationService;
 
     public void saveMessage(MessageRequest messageRequest) {
 
@@ -42,8 +47,18 @@ public class MessageService {
         message.setState(MessageState.SENT);
 
         messageRepository.save(message);
+        Notification notification = Notification.builder()
+                .chatId(chat.getId())
+                .messageType(messageRequest.getType())
+                .content(messageRequest.getContent())
+                .senderId(messageRequest.getSenderId())
+                .recipientId(messageRequest.getReceiverId())
+                .type(NotificationType.MESSAGE)
+                .chatName(chat.getChatName(message.getSenderId()))
+                .build();
 
-        // todo notification
+        notificationService.sendNotification(message.getRecipientId(), notification);
+
 
     }
 
@@ -59,11 +74,18 @@ public class MessageService {
         Chat chat = chatRepository.findById(chatId)
                 .orElseThrow(( ) -> new EntityNotFoundException("Chat not found"));
 
-       //  final String recipientId = getRecipientID(chat, authentication);
+        final String recipientId = getRecipientID(chat, authentication);
 
         messageRepository.setMessagesToSeenByChat(chat.getId(), MessageState.SEEN);
 
-        // todo notification
+        Notification notification = Notification.builder()
+                .chatId(chat.getId())
+                .senderId(getSenderId(chat, authentication))
+                .recipientId(recipientId)
+                .type(NotificationType.SEEN)
+                .build();
+
+        notificationService.sendNotification(recipientId, notification);
 
 
     }
@@ -85,7 +107,17 @@ public class MessageService {
         message.setMediaFilePath(filePath);
         messageRepository.save(message);
 
-        //  todo notification
+        Notification notification = Notification.builder()
+                .chatId(chat.getId())
+                .type(NotificationType.IMAGE)
+                .messageType(MessageType.IMAGE)
+                .senderId(senderId)
+                .recipientId(recipientId)
+                .media(FileUtils.readFileFromLocation(filePath))
+                .build();
+
+        notificationService.sendNotification(recipientId, notification);
+
 
     }
 
