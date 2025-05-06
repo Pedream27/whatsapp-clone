@@ -10,8 +10,6 @@ import java.io.IOException;
 @Component
 public class MessageMapper {
 
-//teste
-    
     public MessageResponse toMessageResponse(Message  message)  {
         return MessageResponse.builder()
                 .id(message.getId())
