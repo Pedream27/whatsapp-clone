@@ -2,6 +2,7 @@ package br.com.phsaraiva.Whatsapp_clone_api.model.message.services;
 
 import br.com.phsaraiva.Whatsapp_clone_api.model.chat.Chat;
 import br.com.phsaraiva.Whatsapp_clone_api.model.chat.repository.ChatRepository;
+import br.com.phsaraiva.Whatsapp_clone_api.model.file.FileService;
 import br.com.phsaraiva.Whatsapp_clone_api.model.message.Message;
 import br.com.phsaraiva.Whatsapp_clone_api.model.message.MessageRequest;
 import br.com.phsaraiva.Whatsapp_clone_api.model.message.MessageResponse;
@@ -16,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -67,7 +69,7 @@ public class MessageService {
 
     }
 
-    private void uploadMediaMessage(String chatId, MultipartFile file , Authentication authentication){
+    public void uploadMediaMessage(String chatId, MultipartFile file , Authentication authentication)  {
         Chat chat = chatRepository.findById(chatId)
                 .orElseThrow(( ) -> new EntityNotFoundException("Chat not found"));
 

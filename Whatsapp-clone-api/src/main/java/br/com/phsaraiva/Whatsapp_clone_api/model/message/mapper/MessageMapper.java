@@ -1,14 +1,17 @@
 package br.com.phsaraiva.Whatsapp_clone_api.model.message.mapper;
 
+import br.com.phsaraiva.Whatsapp_clone_api.model.file.FileUtils;
 import br.com.phsaraiva.Whatsapp_clone_api.model.message.Message;
 import br.com.phsaraiva.Whatsapp_clone_api.model.message.MessageResponse;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 @Component
 public class MessageMapper {
 
 
-    public MessageResponse toMessageResponse(Message  message) {
+    public MessageResponse toMessageResponse(Message  message)  {
         return MessageResponse.builder()
                 .id(message.getId())
                 .content(message.getContent())
@@ -17,7 +20,7 @@ public class MessageMapper {
                 .type(message.getType())
                 .state(message.getState())
                 .createdAt(message.getCreatedDate())
-                // todo leitor de arquivo de midia
+                .media(FileUtils.readFileFromLocation(message.getMediaFilePath()))
                 .build();
 
     }
