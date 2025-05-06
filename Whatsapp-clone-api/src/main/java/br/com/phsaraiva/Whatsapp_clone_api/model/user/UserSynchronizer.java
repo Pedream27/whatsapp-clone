@@ -1,6 +1,5 @@
-package br.com.phsaraiva.Whatsapp_clone_api.model.user.service;
+package br.com.phsaraiva.Whatsapp_clone_api.model.user;
 
-import br.com.phsaraiva.Whatsapp_clone_api.model.user.User;
 import br.com.phsaraiva.Whatsapp_clone_api.model.user.mapper.UserMapper;
 import br.com.phsaraiva.Whatsapp_clone_api.model.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

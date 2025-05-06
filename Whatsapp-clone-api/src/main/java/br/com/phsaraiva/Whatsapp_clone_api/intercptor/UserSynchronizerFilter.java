@@ -1,6 +1,6 @@
 package br.com.phsaraiva.Whatsapp_clone_api.intercptor;
 
-import br.com.phsaraiva.Whatsapp_clone_api.model.user.service.UserSynchronizer;
+import br.com.phsaraiva.Whatsapp_clone_api.model.user.UserSynchronizer;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

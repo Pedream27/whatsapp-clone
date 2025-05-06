@@ -1,6 +1,7 @@
 package br.com.phsaraiva.Whatsapp_clone_api.model.user.mapper;
 
 import br.com.phsaraiva.Whatsapp_clone_api.model.user.User;
+import br.com.phsaraiva.Whatsapp_clone_api.model.user.UserResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,5 +28,16 @@ public class UserMapper {
         }
         user.setLastSeen(LocalDateTime.now());
         return user;
+    }
+
+    public UserResponse toUserResponse(User user) {
+        return UserResponse.builder()
+                .id(user.getId())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .email(user.getEmail())
+                .lastSeen(user.getLastSeen())
+                .isOnline(user.isUserOnLine())
+                .build();
     }
 }
