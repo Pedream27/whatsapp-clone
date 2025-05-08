@@ -49,4 +49,4 @@ Este projeto está sob a licença MIT.
 
 🙋‍♂️ Autor
 
-Pedro Henrique Saraiva De Oliveira - LinkedIn
+Pedro Henrique Saraiva De Oliveira - LinkedIn (https://www.linkedin.com/in/pedro-saraiva-dev/)
